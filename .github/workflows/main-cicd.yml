@@ -83,12 +83,12 @@ jobs:
           docker push ${{ env.AUTH_IMAGE_NAME_LOWER }}:${{ github.sha }}
           docker push ${{ env.AUTH_IMAGE_NAME_LOWER }}:latest
 
-      - name: Deploy to Digital Ocean
+      - name: Deploy to Azure
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.AZURE_HOST }}
           username: ${{ secrets.AZURE_USERNAME }}
-          password: ${{ secrets.AZURE_KEY }}
+          key: ${{ secrets.AZURE_KEY }}
           script: |
             # Create deployment directory
             mkdir -p /deployments/microservices
